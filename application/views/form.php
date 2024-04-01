@@ -13,14 +13,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 
 <body>
+	<p>Submitted Name: <?= $name ?></p>
+	<p>Submitted Password: <?= $password ?></p>
 	<?= form_open("UsersController/create", "class='flex flex-col mx-auto w-1/3'"); ?>
 	<label for="">Name</label>
 	<?= form_error('name', '<div class="error text-red-500">', '</div>'); ?>
-	<input type="text" name="name" value="<?php echo set_value('name'); ?>" class=<?php echo (isset($name_valid) && $name_valid === true) ? '"text-green-500"' : '"text-red-500"'; ?>>
+	<input type="text" name="name" value="<?= set_value('name'); ?>" class="<?= (!form_error("name")) ? 'text-green-500' : 'text-red-500'; ?>">
 
 	<label for="password" class="">Password</label>
 	<?= form_error('password', '<div class="error text-red-500">', '</div>'); ?>
-	<input type="text" name="password" value="<?php echo set_value('password'); ?>" class="<?php echo (isset($password_valid) && $password_valid == 'true') ? 'text-green-500' : 'text-red-500'; ?>">
+	<input type="text" name="password" value="<?= set_value('password'); ?>" class="<?= (!form_error("password")) ? 'text-green-500' : 'text-red-500'; ?>">
 	<input type="submit" class="">
 	<?= form_close(); ?>
 

@@ -8,18 +8,8 @@ class UsersController extends CI_Controller {
 	}
 	public function create() {
 		$this->load->model('UserModel');
-		$data = array(
-			'name' => $this->input->post('name'),
-			'password' => $this->input->post('password')
-		);
-		$validated_result = $this->UserModel->validate_input($data);
 
-		if ($validated_result['name_valid'] === true) {
-			$data['name_valid'] = true;
-		}
-		if ($validated_result['password_valid'] === true) {
-			$data['password_valid'] = true;
-		}
-		$this->load->view('form', $data);
+		$validated_result = $this->UserModel->validate_input();
+		$this->load->view('form', $validated_result);
 	}
 }
